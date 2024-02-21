@@ -1,7 +1,7 @@
 import random
 
 # Generate 20 random account balances between 0 and 5000
-investment_accounts = [random.randint(0, 5000) for _ in range(20)]
+investment_accounts = [random.randint(0, 5000) for _ in range(0, 20)]
 
 # Menu
 while True:
@@ -18,13 +18,15 @@ while True:
     option = int(input("Enter option number: "))
 
     # Menu Options
+    # Print Accounts
     if option == 1:
         print("\nAccount Balances:")
-        account_num = 1
+        account_num = 0
         for balance in investment_accounts:
-            print("Account", account_num, ": $", balance)
+            print("Account", str(account_num) + ": " + str(balance))
             account_num += 1
     
+    # Deposit
     elif option == 2:
         index = int(input("Enter the account number to deposit into (1-20): "))
         amount = int(input("Enter the amount to deposit: $"))
@@ -34,6 +36,7 @@ while True:
         else:
             print("Invalid account number.")
     
+    # Withdrawal
     elif option == 3:
         index = int(input("Enter the account number to withdraw from (1-20): "))
         amount = int(input("Enter the amount to withdraw: $"))
@@ -44,13 +47,19 @@ while True:
             else:
                 print("Sorry, insufficient funds.")
     
+    # Count Under $2000
     elif option == 4:
         count_under_2000 = 0
+        account_num = 0
+        print("COUNT UNDER $2000")
         for balance in investment_accounts:
             if balance < 2000:
                 count_under_2000 += 1
+                account_num += 1
+                print("Account " + str(investment_accounts.index(balance)) + ":" + " $" + str(balance))
         print("Number of Accounts Under $2000:", count_under_2000)
     
+    # Generous Donor
     elif option == 5:
         total_donated = 0
         account_num = 1
@@ -62,6 +71,7 @@ while True:
             account_num += 1
         print("Total Amount Donated: $", total_donated)
     
+    # Hacker Attack
     elif option == 6:
         total_stolen = 0
         account_num = 1
@@ -73,4 +83,5 @@ while True:
         print("Total Amount Stolen: $", total_stolen)
     
     elif option == 7:
+        print('Goodbye!')
         exit() 
